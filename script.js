@@ -1,3 +1,38 @@
+var MovieTitle = React.createClass({
+    propTypes: {
+        title: React.PropTypes.string.isRequired,
+    },
+
+    render: function () {
+        return (
+            React.createElement('h2', {}, this.props.title)
+        )
+    },
+});
+
+var MovieDescription = React.createClass({
+    propTypes: {
+        desc: React.PropTypes.string.isRequired,
+    },
+
+    render: function () {
+        return (
+            React.createElement('p', {}, this.props.desc)
+        )
+    },
+});
+
+var MovieImage = React.createClass({
+    propTypes: {
+        image: React.PropTypes.string.isRequired,
+    },
+
+    render: function () {
+        return (
+            React.createElement('img', {src: this.props.image})
+        )
+    },
+});
 
 var Movie = React.createClass({
     propTypes: {
@@ -7,9 +42,9 @@ var Movie = React.createClass({
     render: function() {
         return (
             React.createElement('li', { key: this.props.movie.id },
-                React.createElement('h2', {}, this.props.movie.title),
-                React.createElement('p', {}, this.props.movie.desc),
-                React.createElement('img', { src: this.props.movie.image })
+                React.createElement(MovieTitle, {title: this.props.movie.title}),
+                React.createElement(MovieDescription, {desc: this.props.movie.desc}),
+                React.createElement(MovieImage, { image: this.props.movie.image})
             )
         )
     },
@@ -42,9 +77,9 @@ var movies = [
     }
 ];
 
-var moviesElements = movies.map(function (movie) {  //łapie, że to jest tablica obiektów czy nie?
+var moviesElements = movies.map(function (movie) { 
     
-    return React.createElement(Movie, {key: movie.id, movie: movie});
+    return React.createElement(Movie, {key: movie.id, movie: movie});  // przypisujemy do zmiennej wynik funkcji
     
 });
 
