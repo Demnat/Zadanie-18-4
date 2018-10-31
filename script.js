@@ -43,7 +43,9 @@ var movies = [
 ];
 
 var moviesElements = movies.map(function (movie) {  //łapie, że to jest tablica obiektów czy nie?
-    React.createElement(Movie, {movie: movie});
+    
+    return React.createElement(Movie, {key: movie.id, movie: movie});
+    
 });
 
 var element =
